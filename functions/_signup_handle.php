@@ -13,7 +13,6 @@
       setcookie('password', $password, time()*60*60*7);
     }
 
-    $_SESSION['email'] = $email;
 
     $stmt = $db->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)");
 
@@ -22,7 +21,10 @@
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':password', $password);
 
-    $stmt->execute();
+    // $stmt->execute();
+    if($stmt->execute()){
+      $_SESSION['email'] = $email;
+    }
 
     header('location: /pdo_crud/index.php');
   }
