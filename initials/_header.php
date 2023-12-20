@@ -14,7 +14,7 @@
           <a class="nav-link" href="/pdo_crud/create.php">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
+          <a class="nav-link" href="/pdo_crud/api.php">API</a>
         </li>
       </ul>
       <span class="navbar-text">
