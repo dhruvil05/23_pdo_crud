@@ -14,7 +14,7 @@
     }
 
 
-    $stmt = $db->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)");
+    $stmt = $dbc->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)");
 
     $stmt->bindValue(':firstname', $firstname);
     $stmt->bindValue(':lastname', $lastname);
@@ -22,7 +22,7 @@
     $stmt->bindValue(':password', $password);
 
     if($stmt->execute()){
-      $last_id = $db->lastInsertId();
+      $last_id = $dbc->lastInsertId();
       $_SESSION['email'] = $email;
       $_SESSION['user_id'] = $last_id;
       header('location: /pdo_crud/index.php');
