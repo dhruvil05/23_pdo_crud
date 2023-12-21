@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<!-- <?php session_start(); ?> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/pdo_crud/index.php">PDO</a>
@@ -14,7 +14,7 @@
           <a class="nav-link" href="/pdo_crud/create.php">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
+          <a class="nav-link" href="/pdo_crud/api.php">API</a>
         </li>
       </ul>
       <span class="navbar-text">

@@ -12,7 +12,6 @@
   $result = $post->read();
   // get the row count
   $num = $result->rowCount();
-  echo json_encode($num);
 
   if($num > 0) {
     $post_arr = array();
