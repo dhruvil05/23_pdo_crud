@@ -4,7 +4,8 @@
   header('Content-Type: application/json');
 
   //initializing our api
-  include_once('../core/initialize.php');
+  include_once('/xampp/htdocs/pdo_crud/core/initialize.php');
+  // include_once('../core/initialize.php');
 
   // instantiate post
   $post = new Post($db);

@@ -19,7 +19,7 @@ use function PHPSTORM_META\type;
  include "./initials/_header.php" ?>
     <?php
       // API endpoint URL
-      $apiUrl = 'http://localhost/pdo_crud/api/read.php';
+      $apiUrl = 'http://localhost/pdo_crud/api/posts/read.php';
 
       // Initialize cURL session
       $ch = curl_init($apiUrl);

@@ -5,7 +5,8 @@
   $db_password = "";
   $db_name = "23_php_rest";
 
-  $db = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', $db_user, $db_password);
+  $dsn = "mysql:host=$db_host;dbname=$db_name;charset=UTF8";
+  $db = new PDO($dsn, $db_user, $db_password);
 
   // set db attributes
   $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

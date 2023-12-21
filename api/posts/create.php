@@ -6,7 +6,8 @@
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Method, Authorization, X-Requested-With');
 
   //initializing our api
-  include_once('../core/initialize.php');
+  // include_once('../core/initialize.php');
+  include_once('/xampp/htdocs/pdo_crud/core/initialize.php');
 
   // instantiate post
   $post = new Post($db);
