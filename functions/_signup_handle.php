@@ -21,12 +21,14 @@
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':password', $password);
 
-    // $stmt->execute();
     if($stmt->execute()){
+      $last_id = $db->lastInsertId();
       $_SESSION['email'] = $email;
+      $_SESSION['user_id'] = $last_id;
+      header('location: /pdo_crud/index.php');
+      exit;
     }
-
-    header('location: /pdo_crud/index.php');
+    
   }
 
 ?>

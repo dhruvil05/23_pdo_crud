@@ -62,7 +62,7 @@
   
       // $_SESSION['email'] = $email;
   
-      $stmt = $db->prepare("SELECT email, password FROM users WHERE email = :email");
+      $stmt = $db->prepare("SELECT id, email, password FROM users WHERE email = :email");
       $stmt->bindValue(':email', $email);
   
       $stmt->execute();
@@ -71,6 +71,7 @@
   
         if($password === $row['password']) {
           $_SESSION['email'] = $row['email'];
+          $_SESSION['user_id'] = $row['id'];
         }
           
         header('location: /pdo_crud/index.php');
