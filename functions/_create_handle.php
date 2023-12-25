@@ -113,6 +113,58 @@ function getSingleData($id) {
 
 }
 
+function update($first_name, $last_name, $gender, $birth_date, $grade_level, $class_id, $address, $city, $state, $zip_code, $parent_name, $contact_number, $enrollment_date, $class_teacher_id, $student_id) 
+{
+  global $dbc;
+
+  $student = [
+    'student_id' => $student_id,
+    'first_name' => $first_name,
+    'last_name' => $last_name,
+    'gender' => $gender,
+    'birth_date' => $birth_date,
+    'grade_level' => $grade_level,
+    'class_id' => $class_id,
+    'address' => $address,
+    'city' => $city,
+    'state' => $state,
+    'zip_code' => $zip_code,
+    'parent_name' => $parent_name,
+    'contact_number' => $contact_number,
+    'enrollment_date' => $enrollment_date,
+    'class_teacher_id' => $class_teacher_id
+  ];
+
+  $query = "UPDATE students SET first_name = :first_name, last_name = :last_name, gender = :gender, 
+  birth_date = :birth_date, grade_level= :grade_level, class_id = :class_id, address = :address, city = :city, state = :state, zip_code = :zip_code, parent_name = :parent_name, contact_number = :contact_number, enrollment_date = :enrollment_date, class_teacher_id= :class_teacher_id WHERE student_id = :student_id";
+
+  $stmt = $dbc->prepare($query);
+
+  // bind the data
+  $stmt->bindParam(':student_id', $student['student_id'], PDO::PARAM_INT);
+  $stmt->bindParam(':first_name', $student['first_name']);
+  $stmt->bindParam(':last_name', $student['last_name']);
+  $stmt->bindParam(':gender', $student['gender']);
+  $stmt->bindParam(':birth_date', $student['birth_date']);
+  $stmt->bindParam(':grade_level', $student['grade_level']);
+  $stmt->bindParam(':class_id', $student['class_id'], PDO::PARAM_INT);
+  $stmt->bindParam(':address', $student['address']);
+  $stmt->bindParam(':city', $student['city']);
+  $stmt->bindParam(':state', $student['state']);
+  $stmt->bindParam(':zip_code', $student['zip_code']);
+  $stmt->bindParam(':parent_name', $student['parent_name']);
+  $stmt->bindParam(':contact_number', $student['contact_number']);
+  $stmt->bindParam(':enrollment_date', $student['enrollment_date']);
+  $stmt->bindParam(':class_teacher_id', $student['class_teacher_id'], PDO::PARAM_INT);
+  // execute query
+  if($stmt->execute()) {
+    return true;
+  }
+
+  return false;
+
+}
+
 function deleteData($id) {
   global $dbc;
 
