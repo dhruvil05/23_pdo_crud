@@ -75,7 +75,7 @@
                           <input type="hidden" name="delete" value="<?php echo $record['student_id'] ?>">
                           <button type="submit" class="btn btn-danger w-100 m-1">Delete</button>
                         </form>
-                        <form action="" method="">
+                        <form action="./update.php" method="GET">
                             <button class="btn btn-primary w-100 m-1" name="update" value="<?php echo $record['student_id'] ?>">Update</button>
                         </form>
                     </td>
