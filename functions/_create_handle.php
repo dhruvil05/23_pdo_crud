@@ -4,18 +4,18 @@ require "./configs/db_config.php";
 
 
 function getData() {
-    global $db;
+    global $dbc;
     $query = "SELECT * FROM classrooms";
-    $stmt = $db->query($query);
+    $stmt = $dbc->query($query);
     $classes = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
     $teacher = "SELECT id,CONCAT(firstname,' ', lastname) AS teacher_name FROM users";
-    $stmt = $db->prepare($teacher);
+    $stmt = $dbc->prepare($teacher);
     $stmt->execute();
     $teachers = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
     $state = "SELECT id, name FROM states";
-    $stmt = $db->query($state);
+    $stmt = $dbc->query($state);
     $states = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
     return [$classes, $teachers, $states];
@@ -23,14 +23,14 @@ function getData() {
 }
 
 function create() {
-  global $db;
+  global $dbc;
   
   
 }
 
 function getAllStudentData() {
-  session_start();
-  global $db;
+  // session_start();
+  global $dbc;
   $user_id = $_SESSION['user_id']??'0';
 
   $query = "SELECT s.*, c.class_name as class, st.name as state, CONCAT(u.firstname, ' ', u.lastname) as class_teacher FROM students s 
@@ -39,7 +39,7 @@ function getAllStudentData() {
               LEFT JOIN users u ON s.class_teacher_id = u.id
               WHERE s.class_teacher_id = $user_id";    
               
-  $stmt = $db->query($query);
+  $stmt = $dbc->query($query);
   $students = [];
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -52,11 +52,11 @@ function getAllStudentData() {
 }
 
 function deleteData($id) {
-  global $db;
+  global $dbc;
 
   $query = "DELETE FROM students where student_id = ?";
 
-  $stmt = $db->prepare($query);
+  $stmt = $dbc->prepare($query);
 
   $stmt->bindParam(1, $id);
 

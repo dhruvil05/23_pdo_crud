@@ -62,7 +62,7 @@
   
       // $_SESSION['email'] = $email;
   
-      $stmt = $db->prepare("SELECT id, email, password FROM users WHERE email = :email");
+      $stmt = $dbc->prepare("SELECT id, email, password FROM users WHERE email = :email");
       $stmt->bindValue(':email', $email);
   
       $stmt->execute();
