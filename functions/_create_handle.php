@@ -29,7 +29,7 @@ function create() {
 }
 
 function getAllStudentData() {
-  session_start();
+  // session_start();
   global $dbc;
   $user_id = $_SESSION['user_id']??'0';
 

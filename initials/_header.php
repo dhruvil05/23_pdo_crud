@@ -55,10 +55,6 @@
       <?php 
         }  
 
-        function sessionDes(){
-          session_start();
-          session_destroy();
-        }
       ?>
       
       <?php include "./initials/_loginmodal.php"; ?>
