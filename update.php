@@ -56,7 +56,7 @@
     ?>
     <?php include "./initials/_header.php" ?>
     <div class="container" style="width:100%;">
-      <h2 class="mb-5 mt-3">Add Student Record</h2>
+      <h2 class="mb-5 mt-3">Update Student Record</h2>
       <form action="./update.php" method="POST" enctype="multipart/form-data">
         <div class="row g-3 mb-3">
           <div class="col">
