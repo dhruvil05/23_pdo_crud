@@ -17,19 +17,49 @@
     
       $result = getData();  // get all require dropdown data
 
+      if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // echo $_POST['first_name'];
+        // Perform form validation and database insertion here
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $gender = $_POST['gender'];
+        $birth_date = $_POST['birth_date'];
+        $grade_level = $_POST['grade_level'];
+        $class_id = $_POST['class_id'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $zip_code = $_POST['zip_code'];
+        $parent_name = $_POST['parent_name'];
+        $contact_number = $_POST['contact_number'];
+        $enrollment_date = $_POST['enrollDate'];
+        $class_teacher_id = $_POST['classTeacher'];
+        
+        // Perform form validation and database insertion
+        $insertSuccess = create($first_name, $last_name, $gender, $birth_date, $grade_level, $class_id, $address, $city, $state, $zip_code, $parent_name, $contact_number, $enrollment_date, $class_teacher_id);
+
+        if ($insertSuccess) {
+            echo '<p class="success-message">Record added successfully!</p>';
+            header("Location: http://localhost/pdo_crud/index.php");
+        } else {
+            echo '<p class="error-message">Error adding record. Please try again.</p>';
+        }
+
+      }
+
     ?>
     <?php include "./initials/_header.php" ?>
     <div class="container" style="width:100%;">
       <h2 class="mb-5 mt-3">Add Student Record</h2>
-      <form action="/" method="POST" enctype="multipart/form-data">
+      <form action="./create.php" method="POST" enctype="multipart/form-data">
         <div class="row g-3 mb-3">
           <div class="col">
             <label for="exampleInputEmail1" class="form-label">Student Firstname</label>
-            <input type="text" class="form-control" name="firstname" placeholder="First name" aria-label="First name">
+            <input type="text" class="form-control" name="first_name" placeholder="First name" aria-label="First name">
           </div>
           <div class="col">
             <label for="exampleInputEmail1" class="form-label">Student Lastname</label>
-            <input type="text" class="form-control" name="lastname" placeholder="Last name" aria-label="Last name">
+            <input type="text" class="form-control" name="last_name" placeholder="Last name" aria-label="Last name">
           </div>
         </div>
         <div class="row g-3 mb-3">
@@ -43,13 +73,13 @@
           </div>
           <div class="col">
             <label for="exampleInputEmail1" class="form-label">Date of birth</label>
-            <input type="date" class="form-control" name="dob" placeholder="date" aria-label="dob">
+            <input type="date" class="form-control" name="birth_date" placeholder="date" aria-label="birth_date">
           </div>
         </div>
         <div class="row g-3 mb-3">
           <div class="col">
             <label class="form-label" for="gender">Grade Level</label>
-            <select class="form-control" name="grade" required>
+            <select class="form-control" name="grade_level" required>
                 <option value="A+">A+</option>
                 <option value="A">A</option>
                 <option value="B+">B+</option>
@@ -61,7 +91,7 @@
           </div>
           <div class="col">
             <label for="exampleInputEmail1" class="form-label">Class</label>
-            <select class="form-control" name="class" required>
+            <select class="form-control" name="class_id" required>
               <?php
                 foreach($result[0] as $key=>$value):
               ?>
@@ -99,7 +129,7 @@
           </div>
           <div class="col">
             <label for="exampleInputEmail1" class="form-label">Zip Code</label>
-            <input type="text" class="form-control" name="zipCode" placeholder="Enter Zipcode" aria-label="zipCode">
+            <input type="text" class="form-control" name="zip_code" placeholder="Enter Zipcode" aria-label="zipCode">
           </div>
         </div>
         <div class="row g-3 mb-3">

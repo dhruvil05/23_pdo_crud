@@ -22,8 +22,50 @@ function getData() {
 
 }
 
-function create() {
+function create($first_name, $last_name, $gender, $birth_date, $grade_level, $class_id, $address, $city, $state, $zip_code, $parent_name, $contact_number, $enrollment_date, $class_teacher_id) {
   global $dbc;
+
+  $query = 'INSERT INTO students SET first_name = :first_name, last_name = :last_name, gender = :gender, 
+      birth_date = :birth_date, grade_level= :grade_level, class_id = :class_id, address = :address, city = :city, state = :state, zip_code = :zip_code, parent_name = :parent_name, contact_number = :contact_number, enrollment_date = :enrollment_date, class_teacher_id= :class_teacher_id';
+      // prepare statement
+      $stmt = $dbc->prepare($query);
+      // clean data
+      $first_name = htmlspecialchars(strip_tags($first_name));
+      $last_name = htmlspecialchars(strip_tags($last_name));
+      $gender = htmlspecialchars(strip_tags($gender));
+      $birth_date = htmlspecialchars(strip_tags($birth_date));
+      $grade_level = htmlspecialchars(strip_tags($grade_level));
+      $class_id = htmlspecialchars(strip_tags($class_id));
+      $address = htmlspecialchars(strip_tags($address));
+      $city = htmlspecialchars(strip_tags($city));
+      $state = htmlspecialchars(strip_tags($state));
+      $zip_code = htmlspecialchars(strip_tags($zip_code));
+      $parent_name = htmlspecialchars(strip_tags($parent_name));
+      $contact_number = htmlspecialchars(strip_tags($contact_number));
+      $enrollment_date = htmlspecialchars(strip_tags($enrollment_date));
+      $class_teacher_id = htmlspecialchars(strip_tags($class_teacher_id));
+
+      // bind the data
+      $stmt->bindParam(':first_name', $first_name);
+      $stmt->bindParam(':last_name', $last_name);
+      $stmt->bindParam(':gender', $gender);
+      $stmt->bindParam(':birth_date', $birth_date);
+      $stmt->bindParam(':grade_level', $grade_level);
+      $stmt->bindParam(':class_id', $class_id, PDO::PARAM_INT);
+      $stmt->bindParam(':address', $address);
+      $stmt->bindParam(':city', $city);
+      $stmt->bindParam(':state', $state);
+      $stmt->bindParam(':zip_code', $zip_code);
+      $stmt->bindParam(':parent_name', $parent_name);
+      $stmt->bindParam(':contact_number', $contact_number);
+      $stmt->bindParam(':enrollment_date', $enrollment_date);
+      $stmt->bindParam(':class_teacher_id', $class_teacher_id, PDO::PARAM_INT);
+      // execute query
+      if($stmt->execute()) {
+        return true;
+      }
+
+      return false; 
   
   
 }
@@ -48,6 +90,26 @@ function getAllStudentData() {
   }
 
   return $students;
+
+}
+
+function getSingleData($id) {
+  global $dbc;
+
+  $query = "SELECT * FROM students WHERE student_id = $id";
+
+  $result = $dbc->query($query);
+
+  $records = [];
+
+  while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      $records[] = $row;
+  }
+
+  // $result->free();
+
+  return $records;
+
 
 }
 
