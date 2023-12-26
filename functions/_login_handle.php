@@ -47,9 +47,11 @@
 
     if (!empty($errors)) {
       // Display errors
-      foreach ($errors as $fieldName => $error) {
-          echo $error . "<br>";
-      }
+      // foreach ($errors as $fieldName => $error) {
+        $_SESSION['loginValidation'] = $errors;
+        header('location: /pdo_crud/index.php');
+          // return $error . "<br>";
+      // }
     } else {
        
       $email = $_POST['email'];
