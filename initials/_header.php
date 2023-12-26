@@ -16,6 +16,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/pdo_crud/api.php">API</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pdo_crud/curl.php">cURL</a>
+        </li>
       </ul>
       <span class="navbar-text">
         <?php
