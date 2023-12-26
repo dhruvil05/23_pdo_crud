@@ -28,14 +28,21 @@
     
     <?php include __DIR__."/initials/_header.php" ?>
     <?php
-      if(isset($_SESSION['loginValidation'])):
+      if(isset($_SESSION['loginValidation']) || isset($_SESSION['updateValidation'])):
     ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Please!</strong>
+        <strong>Please,</strong>
         <?php 
-          foreach($_SESSION['loginValidation'] as $alert){
-            echo $alert.', ';
-            unset($_SESSION['loginValidation']);
+          if(isset($_SESSION['updateValidation'])){
+            echo "Fill all the field. <b>Update failed!</b>";
+            unset($_SESSION['updateValidation']);
+
+          }
+          if(isset($_SESSION['loginValidation'])){
+            foreach($_SESSION['loginValidation'] as $alert){
+              echo $alert.', ';
+              unset($_SESSION['loginValidation']);
+            }
           }
         ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

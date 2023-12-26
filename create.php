@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,37 +18,145 @@
     
       $result = getData();  // get all require dropdown data
 
-      if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Perform form validation and database insertion here
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $gender = $_POST['gender'];
-        $birth_date = $_POST['birth_date'];
-        $grade_level = $_POST['grade_level'];
-        $class_id = $_POST['class_id'];
-        $address = $_POST['address'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $zip_code = $_POST['zip_code'];
-        $parent_name = $_POST['parent_name'];
-        $contact_number = $_POST['contact_number'];
-        $enrollment_date = $_POST['enrollDate'];
-        $class_teacher_id = $_POST['classTeacher'];
-        
-        // Perform form validation and database insertion
-        $insertSuccess = create($first_name, $last_name, $gender, $birth_date, $grade_level, $class_id, $address, $city, $state, $zip_code, $parent_name, $contact_number, $enrollment_date, $class_teacher_id);
+      function validate($field, $rules) {
+        foreach ($rules as $rule) {
+          switch ($rule['type']) {
+              case 'required':
+                  if (empty($field)) {
+                      return $rule['message'];
+                  }
+                  break;
+      
+              default:
+                  // Default case if no validation rule matches
+                  break;
+          }
+        }
+        return '';
+      }
+      
+      $validationRules = [
+        'first_name' => [
+            ['type' => 'required', 'message' => 'Firstname is required'],
+            // Add more rules as needed
+        ],
+        'last_name' => [
+            ['type' => 'required', 'message' => 'Lastname is required'],
+            // Add more rules as needed
+        ],
+        'gender' => [
+          ['type' => 'required', 'message' => 'Gender is required'],
+          // Add more rules as needed
+        ],
+        'birth_date' => [
+          ['type' => 'required', 'message' => 'Birth date is required'],
+          // Add more rules as needed
+        ],
+        'grade_level' => [
+          ['type' => 'required', 'message' => 'Select Grade'],
+          // Add more rules as needed
+        ],
+        'class_id' => [
+          ['type' => 'required', 'message' => 'Select Class'],
+          // Add more rules as needed
+        ],
+        'address' => [
+          ['type' => 'required', 'message' => 'Address is required'],
+          // Add more rules as needed
+        ],
+        'city' => [
+          ['type' => 'required', 'message' => 'City is required'],
+          // Add more rules as needed
+        ],
+        'state' => [
+          ['type' => 'required', 'message' => 'Select State'],
+          // Add more rules as needed
+        ],
+        'zip_code' => [
+          ['type' => 'required', 'message' => 'Zip-code is required'],
+          // Add more rules as needed
+        ],
+        'parent_name' => [
+          ['type' => 'required', 'message' => 'Parent name is required'],
+          // Add more rules as needed
+        ],
+        'contact_number' => [
+          ['type' => 'required', 'message' => 'Contact is required'],
+          // Add more rules as needed
+        ],
+        'enrollDate' => [
+          ['type' => 'required', 'message' => 'Enrollment Date is required'],
+          // Add more rules as needed
+        ],
+        'classTeacher' => [
+          ['type' => 'required', 'message' => 'Select Class Teacher'],
+          // Add more rules as needed
+        ],
+      
+      ];
 
-        if ($insertSuccess) {
+      if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $errors = [];
+        
+        foreach ($validationRules as $fieldName => $rules) {
+          $fieldValue = $_POST[$fieldName];
+          $error = validate($fieldValue, $rules);
+    
+          if (!empty($error)) {
+              $errors[$fieldName] = $error;
+          }
+        }
+
+        if (!empty($errors)) {
+          // var_dump($errors);
+          // Display errors 
+            $_SESSION['createValidation'] = $errors;
+            header('location: /pdo_crud/create.php');
+              // return $error . "<br>";
+          // }
+        }else{
+          // Perform form validation and database insertion here
+          $first_name = $_POST['first_name'];
+          $last_name = $_POST['last_name'];
+          $gender = $_POST['gender'];
+          $birth_date = $_POST['birth_date'];
+          $grade_level = $_POST['grade_level'];
+          $class_id = $_POST['class_id'];
+          $address = $_POST['address'];
+          $city = $_POST['city'];
+          $state = $_POST['state'];
+          $zip_code = $_POST['zip_code'];
+          $parent_name = $_POST['parent_name'];
+          $contact_number = $_POST['contact_number'];
+          $enrollment_date = $_POST['enrollDate'];
+          $class_teacher_id = $_POST['classTeacher'];
+        
+          // Perform form validation and database insertion
+          $insertSuccess = create($first_name, $last_name, $gender, $birth_date, $grade_level, $class_id, $address, $city, $state, $zip_code, $parent_name, $contact_number, $enrollment_date, $class_teacher_id);
+        
+          if ($insertSuccess) {
             echo '<p class="success-message">Record added successfully!</p>';
             header("Location: http://localhost/pdo_crud/index.php");
-        } else {
+          } else {
             echo '<p class="error-message">Error adding record. Please try again.</p>';
+          }
         }
 
       }
 
     ?>
     <?php include "./initials/_header.php" ?>
+    <?php
+      if(isset($_SESSION['createValidation'])):
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Please!</strong>
+        <?php 
+            echo 'All Field Must Be Filled!';
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php endif ?>
     <div class="container" style="width:100%;">
       <h2 class="mb-5 mt-3">Add Student Record</h2>
       <form action="./create.php" method="POST" enctype="multipart/form-data">
