@@ -27,6 +27,21 @@
     ?>
     
     <?php include __DIR__."/initials/_header.php" ?>
+    <?php
+      if(isset($_SESSION['loginValidation'])):
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Please!</strong>
+        <?php 
+          foreach($_SESSION['loginValidation'] as $alert){
+            echo $alert.', ';
+            unset($_SESSION['loginValidation']);
+          }
+        ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php endif ?>
+
     <h2>Students Data</h2>
 
     <table class="table table-striped table-hover">

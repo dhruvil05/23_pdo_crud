@@ -10,21 +10,21 @@
           <div class="row g-3 mb-3">
             <div class="col">
               <label for="exampleInputEmail1" class="form-label">Firstname</label>
-              <input type="text" class="form-control" name="firstname" placeholder="First name" aria-label="First name">
+              <input type="text" class="form-control" name="firstname" placeholder="First name" aria-label="First name" required>
             </div>
             <div class="col">
               <label for="exampleInputEmail1" class="form-label">Lastname</label>
-              <input type="text" class="form-control" name="lastname" placeholder="Last name" aria-label="Last name">
+              <input type="text" class="form-control" name="lastname" placeholder="Last name" aria-label="Last name" required>
             </div>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
