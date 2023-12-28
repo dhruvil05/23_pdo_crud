@@ -50,13 +50,13 @@
     <?php endif ?>
 
     <h2>Students Data</h2>
-
-    <table class="table table-striped table-hover">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
                 <th>Gender</th>
                 <th>Birth Date</th>
                 <th>Grade Level</th>
@@ -71,40 +71,41 @@
                 <th>Class Teacher</th>
                 <th>Feature</th>
                 <!-- Add more columns as needed -->
-            </tr>
+              </tr>
         </thead>
         <tbody>
-            <?php foreach($records as $record) : ?>
-                <tr>
-                    <td><?php echo $record['student_id'] ?></td>
-                    <td><?php echo $record['first_name'] ?></td>
-                    <td><?php echo $record['last_name'] ?></td>
-                    <td><?php echo $record['gender'] ?></td>
-                    <td><?php echo $record['birth_date'] ?></td>
-                    <td><?php echo $record['grade_level'] ?></td>
-                    <td><?php echo $record['class'] ?></td>
-                    <td><?php echo $record['address'] ?></td>
-                    <td><?php echo $record['city'] ?></td>
-                    <td><?php echo $record['state'] ?></td>
-                    <td><?php echo $record['zip_code'] ?></td>
-                    <td><?php echo $record['parent_name'] ?></td>
-                    <td><?php echo $record['contact_number'] ?></td>
-                    <td><?php echo $record['enrollment_date'] ?></td>
-                    <td><?php echo $record['class_teacher'] ?></td>
-                   
-                    <td class="btn_grp">
-                        <form action="./index.php" method="post" onsubmit="return confirmDelete()">
-                          <input type="hidden" name="delete" value="<?php echo $record['student_id'] ?>">
-                          <button type="submit" class="btn btn-danger w-100 m-1">Delete</button>
-                        </form>
-                        <form action="./update.php" method="GET">
-                            <button class="btn btn-primary w-100 m-1" name="update" value="<?php echo $record['student_id'] ?>">Update</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
+          <?php foreach($records as $record) : ?>
+            <tr>
+              <td><?php echo $record['student_id'] ?></td>
+              <td><?php echo $record['first_name'] ?></td>
+              <td><?php echo $record['last_name'] ?></td>
+              <td><?php echo $record['gender'] ?></td>
+              <td><?php echo $record['birth_date'] ?></td>
+              <td><?php echo $record['grade_level'] ?></td>
+              <td><?php echo $record['class'] ?></td>
+              <td><?php echo $record['address'] ?></td>
+              <td><?php echo $record['city'] ?></td>
+              <td><?php echo $record['state'] ?></td>
+              <td><?php echo $record['zip_code'] ?></td>
+              <td><?php echo $record['parent_name'] ?></td>
+              <td><?php echo $record['contact_number'] ?></td>
+              <td><?php echo $record['enrollment_date'] ?></td>
+              <td><?php echo $record['class_teacher'] ?></td>
+              
+              <td class="btn_grp">
+                <form action="./index.php" method="post" onsubmit="return confirmDelete()">
+                  <input type="hidden" name="delete" value="<?php echo $record['student_id'] ?>">
+                  <button type="submit" class="btn btn-danger w-100 m-1">Delete</button>
+                </form>
+                <form action="./update.php" method="GET">
+                  <button class="btn btn-primary w-100 m-1" name="update" value="<?php echo $record['student_id'] ?>">Update</button>
+                </form>
+              </td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
-    </table>
+      </table>
+    </div>
     <script>
       function confirmDelete() {
         var result = confirm("Are you sure you want to delete this item?");
