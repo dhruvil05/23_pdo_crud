@@ -4,8 +4,8 @@
   // header('Content-Type: application/json');
   
   //initializing our api
-  include_once('/xampp/htdocs/pdo_crud/core/initialize.php');
-  // include_once('../core/initialize.php');
+  include_once dirname(__DIR__, 2) . '/core/initialize.php';
+  // include_once dirname(__DIR__, 2) . '/core/initialize.php';
 // print_r($_SESSION);
   $user_id = $_SESSION['user_id'] ?? $_REQUEST['user_id'];
 

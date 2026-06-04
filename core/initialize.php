@@ -3,7 +3,7 @@
   defined('DS') ? null : define("DS", DIRECTORY_SEPARATOR);
   defined("SITE_ROOT") ? null : define("SITE_ROOT", DS.'xampp'.DS .'htdocs'.DS. 'pdo_crud');
 
-  // /xampp/htdocs/pdo_crud/includes
+  // /xampp/htdocs/23_pdo_crud/includes
   defined("INC_PATH") ? null : define("INC_PATH", SITE_ROOT.DS.'includes');
   defined("CORE_PATH") ? null : define("CORE_PATH", SITE_ROOT.DS.'core');
   defined("CONF_PATH") ? null : define("CONF_PATH", SITE_ROOT.DS.'configs');

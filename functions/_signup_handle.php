@@ -56,7 +56,7 @@
       // Display errors
       // foreach ($errors as $fieldName => $error) {
         $_SESSION['loginValidation'] = $errors;
-        header('location: /pdo_crud/index.php');
+        header('location: /23_pdo_crud/index.php');
           // return $error . "<br>";
       // }
     }else{
@@ -82,7 +82,7 @@
         $last_id = $dbc->lastInsertId();
         $_SESSION['email'] = $email;
         $_SESSION['user_id'] = $last_id;
-        header('location: /pdo_crud/index.php');
+        header('location: /23_pdo_crud/index.php');
         exit;
       }
     }

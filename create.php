@@ -111,7 +111,7 @@
           // var_dump($errors);
           // Display errors 
             $_SESSION['createValidation'] = $errors;
-            header('location: /pdo_crud/create.php');
+            header('location: /23_pdo_crud/create.php');
               // return $error . "<br>";
           // }
         }else{
@@ -136,7 +136,7 @@
         
           if ($insertSuccess) {
             echo '<p class="success-message">Record added successfully!</p>';
-            header("Location: http://localhost/pdo_crud/index.php");
+            header("Location: http://localhost/23_pdo_crud/index.php");
           } else {
             echo '<p class="error-message">Error adding record. Please try again.</p>';
           }

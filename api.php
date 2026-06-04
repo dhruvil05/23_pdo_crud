@@ -19,7 +19,7 @@ use function PHPSTORM_META\type;
  include "./initials/_header.php" ?>
     <?php
       // API endpoint URL
-      $apiUrl = 'http://localhost/pdo_crud/api/posts/read.php';
+      $apiUrl = 'http://localhost/23_pdo_crud/api/posts/read.php';
 
       // Initialize cURL session
       $ch = curl_init($apiUrl);
@@ -43,6 +43,9 @@ use function PHPSTORM_META\type;
     <div class="container">
       <?php 
         $results = json_decode($response);
+        if($results->success) {
+          echo "<h1 class='text-center'>Posts</h1>";
+        
         foreach ($results->data as $card):
       ?>
       
@@ -58,7 +61,7 @@ use function PHPSTORM_META\type;
         </div>
       </div>
 
-      <?php endforeach; ?>
+      <?php endforeach; } ?>
     </div>
     <?php include "./initials/_footer.php" ?>
 

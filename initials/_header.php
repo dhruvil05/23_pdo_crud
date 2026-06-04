@@ -1,20 +1,20 @@
 <!-- <?php session_start(); ?> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/pdo_crud/index.php">PDO</a>
+    <a class="navbar-brand" href="/23_pdo_crud/index.php">PDO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/pdo_crud/index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="/23_pdo_crud/index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pdo_crud/create.php">Create</a>
+          <a class="nav-link" href="/23_pdo_crud/create.php">Create</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pdo_crud/api.php">API</a>
+          <a class="nav-link" href="/23_pdo_crud/api.php">API</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -31,7 +31,7 @@
       
           session_destroy();
       
-          header('location: http://localhost/pdo_crud/index.php');
+          header('location: http://localhost/23_pdo_crud/index.php');
 
           exit();
         }

@@ -175,7 +175,7 @@ function deleteData($id) {
   $stmt->bindParam(1, $id);
 
   if($stmt->execute()){
-    header('Location: http://localhost/pdo_crud/index.php');
+    header('Location: http://localhost/23_pdo_crud/index.php');
   }else{
     echo 'Data not delete.';
   }

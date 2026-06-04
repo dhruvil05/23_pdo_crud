@@ -6,8 +6,8 @@
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Method, Authorization, X-Requested-With');
 
   //initializing our api
-  // include_once('../core/initialize.php');
-  include_once('/xampp/htdocs/pdo_crud/core/initialize.php');
+  // include_once dirname(__DIR__, 2) . '/core/initialize.php';
+  include_once dirname(__DIR__, 2) . '/core/initialize.php';
 
   // instantiate post
   $student = new Student($dbc);

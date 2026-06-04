@@ -115,7 +115,7 @@
 
         if (!empty($errors)) { 
             $_SESSION['updateValidation'] = $errors;
-            header('location: /pdo_crud/index.php');
+            header('location: /23_pdo_crud/index.php');
         }else{
           
           $student_id = $_POST['update_id'];
@@ -139,7 +139,7 @@
           
           if ($updateSuccess) {
             echo '<p class="success-message">Record updated successfully!</p>';
-            header("Location: http://localhost/pdo_crud/index.php");
+            header("Location: http://localhost/23_pdo_crud/index.php");
           } else {
             echo '<p class="error-message">Error adding record. Please try again.</p>';
           }

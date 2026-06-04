@@ -49,7 +49,7 @@
       // Display errors
       // foreach ($errors as $fieldName => $error) {
         $_SESSION['loginValidation'] = $errors;
-        header('location: /pdo_crud/index.php');
+        header('location: /23_pdo_crud/index.php');
           // return $error . "<br>";
       // }
     } else {
@@ -76,7 +76,7 @@
           $_SESSION['user_id'] = $row['id'];
         }
           
-        header('location: /pdo_crud/index.php');
+        header('location: /23_pdo_crud/index.php');
         exit;
       }
     }

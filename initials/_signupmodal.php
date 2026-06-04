@@ -5,7 +5,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/pdo_crud/functions/_signup_handle.php" method="post">
+      <form action="/23_pdo_crud/functions/_signup_handle.php" method="post">
         <div class="modal-body">
           <div class="row g-3 mb-3">
             <div class="col">
